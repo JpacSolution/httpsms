@@ -1,0 +1,94 @@
+# Query: api.httpsms.com
+# ContextLines: 1
+
+20 results - 14 files
+
+README.md:
+  64  
+  65: The API https://api.jpacsolution.com is built using [Fiber](https://gofiber.io/), Go and [CockroachDB](https://www.cockroachlabs.com/) for the database.
+  66: It rus as a serverless application on Google Cloud Run. The API documentation can be found here https://api.jpacsolution.com/index.html
+  67  
+
+android/app/src/main/res/values/strings.xml:
+  12      <string name="login_phone_number_hint">e.g +18005550199 (international format)</string>
+  13:     <string name="login_server_url_hint">e.g https://api.jpacsolution.com</string>
+  14      <string name="phone_number">Phone Number</string>
+
+  16      <string name="server_url">Server URL</string>
+  17:     <string name="default_server_url">https://api.jpacsolution.com</string>
+  18      <string name="app_version">httpsms.com - %s</string>
+
+api/main.go:
+  24  //
+  25: // @host     api.jpacsolution.com
+  26  // @schemes  https
+
+api/docs/docs.go:
+  5382  	Version:          "1.0",
+  5383: 	Host:             "api.jpacsolution.com",
+  5384  	BasePath:         "/v1",
+
+api/docs/swagger.json:
+  18      },
+  19:     "host": "api.jpacsolution.com",
+  20      "basePath": "/v1",
+
+api/docs/swagger.yaml:
+  1559      type: object
+  1560: host: api.jpacsolution.com
+  1561  info:
+
+api/pkg/services/webhook_service.go:
+  345  		IssuedAt:  jwt.NewNumericDate(time.Now().UTC()),
+  346: 		Issuer:    "api.jpacsolution.com",
+  347  		NotBefore: jwt.NewNumericDate(time.Now().UTC().Add(-10 * time.Minute)),
+
+tests/helpers_test.go:
+  274  	require.True(t, ok, "cannot parse claims")
+  275: 	require.Equal(t, "api.jpacsolution.com", claims["iss"], "issuer mismatch")
+  276  	require.NotEmpty(t, claims["sub"], "subject mismatch")
+
+web/.env.production:
+  1: API_BASE_URL=https://api.jpacsolution.com
+  2  APP_URL=https://httpsms.com
+
+web/app/pages/index.vue:
+  588  $context  = stream_context_create( $options );
+  589: $result = file_get_contents( "https://api.jpacsolution.com/v1/messages/send", false, $context );
+  590  
+
+  600  
+  601: url = 'https://api.jpacsolution.com/v1/messages/send'
+  602  
+
+  646  var request = HttpRequest.newBuilder()
+  647:         .uri(URI.create("https://api.jpacsolution.com/v1/messages/send"))
+  648          .header("accept", "application/json")
+
+  659                        class="pa-4 bg-surface rounded mt-2"
+  660:                     ><code class="language-bash">curl --location --request POST 'https://api.jpacsolution.com/v1/messages/send' \
+  661  --header 'x-api-key: Get API Key from https://httpsms.com/settings' \
+
+  675  var response = await client.PostAsync(
+  676:     "https://api.jpacsolution.com/v1/messages/send",
+  677      new StringContent(
+
+web/app/pages/blog/send-sms-from-android-phone-with-python.vue:
+  125  
+  126: url = 'https://api.jpacsolution.com/v1/messages/send'
+  127  
+
+web/app/pages/blog/send-sms-when-new-row-is-added-to-google-sheets-using-zapier.vue:
+  102            <code>Post</code>. Set the URL to
+  103:           <code>https://api.jpacsolution.com/v1/messages/send</code>. Set the
+  104            <code>Data Pass-Through</code> to <code>false</code>. In the Data
+
+web/app/pages/phone-api-keys/index.vue:
+  287                  target="_blank"
+  288:                 href="https://api.jpacsolution.com"
+  289                  >httpSMS API</a
+
+web/app/pages/settings/index.vue:
+  880                when sending requests to
+  881:               <v-code>https://api.jpacsolution.com</v-code> endpoints.
+  882              </p>
